@@ -66,27 +66,51 @@
             text-decoration: underline;
         }
         .tg-widget {
-            display: flex;
+            display: none; /* Скрываем виджет по умолчанию */
             justify-content: center;
-            width: 100%;
+            width: 150px;
+            height: 300px;
+            margin-top: 20px;
+        }
+        .show-widget-button {
+            cursor: pointer;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            margin: 10px;
+        }
+        .show-widget-button:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
 <body>
     <div class="buttons">
-        <a href="https://t.me/vaska" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
-        </a>
         <a href="https://telegra.ph/NSPCH-DSN-02-25" target="_blank">
-            <img src="https://telegra.ph/favicon.ico" alt="Telegra.ph">
+            <img src="https://telegra.ph/favicon.ico" alt="НСПЧ">
+        </a>
+        <a href="https://telegra.ph/Manifest-NSPCH-U-08-01" target="_blank">
+            <img src="https://scontent.fvin2-1.fna.fbcdn.net/v/t39.30808-6/295972862_372930421622069_7229136960484248904_n.png?_nc_cat=110&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=RUjGrFRdTWMQ7kNvgH2FOEc&_nc_ht=scontent.fvin2-1.fna&oh=00_AYCRwvdYnTRXqZfl0ErTB1BafLONmWlCTc2gk1MODClL-Q&oe=66B866C2" alt="НСПЧ-У">
         </a>
     </div>
     <div class="content">
         <h1>DSN NEWS</h1>
         <h2><a href="https://t.me/sanitar4ick" target="_blank">by sanitar4ick with ❤️</a></h2>
+		<b>ТУТ БУДУТ НОВОСТИ, И ЕЩЁ МНОГО ЧЕГО ИНТЕРЕСНОГО)</b>
     </div>
-    <div class="tg-widget">
-        <script async src="https://telegram.org/js/telegram-widget.js?19" data-telegram-post="democracyDSN/8256" data-width="300"></script>
+    <button class="show-widget-button" onclick="showWidget()">Поехали!</button>
+    <div class="tg-widget" id="tg-widget">
+        <script async src="https://telegram.org/js/telegram-widget.js?19" data-telegram-post="democracyDSN/8256" data-width="150" data-height="300"></script>
     </div>
+
+    <script>
+        function showWidget() {
+            document.getElementById('tg-widget').style.display = 'flex';
+            document.querySelector('.show-widget-button').style.display = 'none';
+        }
+    </script>
 </body>
 </html>
