@@ -85,9 +85,67 @@
         .show-widget-button:hover {
             background-color: #0056b3;
         }
+
+        /* Стили для меню */
+        .menu-icon {
+            cursor: pointer;
+            padding: 10px;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+
+        .menu-icon div {
+            width: 25px;
+            height: 3px;
+            background-color: #333;
+            margin: 5px 0;
+        }
+
+        .menu {
+            display: none;
+            position: absolute;
+            top: 50px;
+            left: 10px;
+            width: 200px;
+            background-color: #f4f4f4;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            border-radius: 5px;
+            font-family: "Times New Roman", Times, serif;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #333;
+            display: block;
+            padding: 10px 0;
+        }
+
+        .menu a.active {
+            font-weight: bold;
+        }
+
+        .menu a:hover {
+            background-color: #ddd;
+        }
     </style>
 </head>
 <body>
+    <!-- Иконка меню -->
+    <div class="menu-icon" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+    <!-- Меню -->
+    <div class="menu" id="menu">
+        <a href="index.html" class="active">Главная</a>
+        <a href="nspch.html">НСПЧ</a>
+        <a href="leaders.html">Доска почёта</a>
+    </div>
+
     <div class="buttons">
         <a href="https://telegra.ph/NSPCH-DSN-02-25" target="_blank">
             <img src="https://telegra.ph/favicon.ico" alt="НСПЧ">
@@ -107,6 +165,32 @@
     </div>
 
     <script>
+        function toggleMenu() {
+            var menu = document.getElementById('menu');
+            if (menu.style.display === 'block') {
+                menu.style.display = 'none';
+            } else {
+                menu.style.display = 'block';
+            }
+        }
+
+        // Определяем текущую страницу и добавляем класс 'active' к соответствующей ссылке
+        function setActiveLink() {
+            var links = document.querySelectorAll('.menu a');
+            var currentUrl = window.location.pathname.split("/").pop();
+
+            links.forEach(function(link) {
+                var linkUrl = link.getAttribute('href');
+                if (linkUrl === currentUrl) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }
+
+        setActiveLink();
+
         function showWidget() {
             document.getElementById('tg-widget').style.display = 'flex';
             document.querySelector('.show-widget-button').style.display = 'none';
