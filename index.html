@@ -5,91 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DSN NEWS</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            background-color: #f0f0f0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-        }
-        .buttons {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-        .buttons a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: #f0f0f0;
-            color: white;
-            text-decoration: none;
-        }
-        .buttons a:hover {
-            background-color: #007bff;
-        }
-        .buttons a:visited, .buttons a:link, .buttons a:hover, .buttons a:active {
-            color: white;
-            text-decoration: none;
-        }
-        .buttons a img {
-            width: 20px;
-            height: 20px;
-        }
-        .content {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        h1 {
-            font-size: 3rem;
-            color: #333;
-            margin: 0;
-        }
-        h2 {
-            font-size: 1.2rem;
-            color: #555;
-            margin: 0;
-        }
-        a {
-            color: #007bff;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        .tg-widget {
-            display: flex;
-            justify-content: center;
-            width: 100%;
-        }
-        .article-container {
-            text-align: center;
-            margin-top: 20px;
-        }
-        .article-button {
-            background-color: #007bff;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .article-button:hover {
-            background-color: #0056b3;
-        }
-        .article-content {
-            display: none;
-            margin-top: 10px;
-            width: 100%;
-            max-width: 600px;
-        }
+        /* ... ваш CSS код ... */
     </style>
     <script>
         async function loadArticle() {
- 
+            try {
+                const response = await fetch('https://api.telegra.ph/getPage?path=Manifest-NSPCH-U-08-01');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data = await response.json();
+                console.log('Article Data:', data); // Выводим данные для отладки
+                if (data.result && data.result.content) {
+                    document.querySelector('.article-content').innerHTML = data.result.content;
+                } else {
+                    document.querySelector('.article-content').innerHTML = '<p>Статья не найдена или пустая.</p>';
+                }
+            } catch (error) {
+                console.error('Error loading article:', error);
+                document.querySelector('.article-content').innerHTML = '<p>Ошибка загрузки статьи.</p>';
+            }
+        }
+
+        function toggleArticle() {
+            const article = document.querySelector('.article-content');
+            const button = document.querySelector('.article-button');
+            if (article.style.display === 'none' || article.style.display === '') {
+                article.style.display = 'block';
+                button.textContent = 'Свернуть статью';
+                if (!article.innerHTML) {
+                    loadArticle();
+                }
+            } else {
+                article.style.display = 'none';
+                button.textContent = 'Открыть статью';
+            }
+        }
+    </script>
+</head>
+<body>
+    <!-- Ваш HTML код -->
+</body>
+</html>
