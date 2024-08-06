@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Доска почёта</title>
+    <style>
+        body {
+            font-family: "Times New Roman", Times, serif;
+            margin: 0;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .menu-icon {
+            cursor: pointer;
+            padding: 10px;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+
+        .menu-icon div {
+            width: 25px;
+            height: 3px;
+            background-color: #333;
+            margin: 5px 0;
+        }
+
+        .menu {
+            display: none;
+            position: absolute;
+            top: 50px;
+            left: 10px;
+            width: 200px;
+            background-color: #f4f4f4;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            border-radius: 5px;
+            font-family: "Times New Roman", Times, serif;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #333;
+            display: block;
+            padding: 10px 0;
+        }
+
+        .menu a.active {
+            font-weight: bold;
+        }
+
+        .menu a:hover {
+            background-color: #ddd;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .profile {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            width: 100%;
+            max-width: 800px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .profile img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+
+        .profile-info {
+            max-width: 600px;
+        }
+
+        .profile-info h3 {
+            margin: 0;
+        }
+
+        .profile-info em {
+            font-style: italic;
+        }
+
+        .profile-info strong {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- Иконка меню -->
+    <div class="menu-icon" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+    <!-- Меню -->
+    <div class="menu" id="menu">
+        <a href="index.html">Главная</a>
+        <a href="nspch.html">НСПЧ</a>
+        <a href="leaders.html" class="active">Доска почёта</a>
+    </div>
+
+    <h1>Доска почёта</h1>
+
+    <div class="profile">
+        <img src="img/person1.jpg" alt="Фото профиля">
+        <div class="profile-info">
+            <h3>Иван Иванов</h3>
+            <p><em>Ваня, Ванька, Вандал</em></p>
+            <p>Первое появление: 2024</p>
+            <p>Партийная принадлежность: Слуга Народа</p>
+            <p>Чем известен: Дотер</p>
+            <p><strong>День рождения: 20 апреля</strong></p>
+            <p>Список наград:</p>
+            <ul>
+                <li>Премия за лучший минет 2023</li>
+                <li>Золотая медаль хоббихорсера</li>
+                <li>Премия за широкий анус</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Повторить блок .profile для других персон -->
+
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById('menu');
+            if (menu.style.display === 'block') {
+                menu.style.display = 'none';
+            } else {
+                menu.style.display = 'block';
+            }
+        }
+
+        // Определяем текущую страницу и добавляем класс 'active' к соответствующей ссылке
+        function setActiveLink() {
+            var links = document.querySelectorAll('.menu a');
+            var currentUrl = window.location.pathname.split("/").pop();
+
+            links.forEach(function(link) {
+                var linkUrl = link.getAttribute('href');
+                if (linkUrl === currentUrl) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }
+
+        setActiveLink();
+    </script>
+</body>
+</html>

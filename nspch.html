@@ -1,0 +1,157 @@
+<!06.08.2024 - DSN (sanitar4ick)>
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>НСПЧ</title>
+    <style>
+        body {
+            font-family: "Times New Roman", Times, serif;
+            margin: 0;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .menu-icon {
+            cursor: pointer;
+            padding: 10px;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+
+        .menu-icon div {
+            width: 25px;
+            height: 3px;
+            background-color: #333;
+            margin: 5px 0;
+        }
+
+        .menu {
+            display: none;
+            position: absolute;
+            top: 50px;
+            left: 10px;
+            width: 200px;
+            background-color: #f4f4f4;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            border-radius: 5px;
+            font-family: "Times New Roman", Times, serif;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #333;
+            display: block;
+            padding: 10px 0;
+        }
+
+        .menu a.active {
+            font-weight: bold;
+        }
+
+        .menu a:hover {
+            background-color: #ddd;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            margin: 20px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight {
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        .image-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .image-container img {
+            max-width: 70%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px 5px rgba(51, 51, 51, 0.7);
+        }
+    </style>
+</head>
+<body>
+    <!-- Иконка меню -->
+    <div class="menu-icon" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+    <!-- Меню -->
+    <div class="menu" id="menu">
+        <a href="index.html">Главная</a>
+        <a href="nspch.html" class="active">НСПЧ</a>
+        <a href="leaders.html">Доска почёта</a>
+    </div>
+
+    <div class="container">
+        
+        <div class="image-container">
+            <img src="img/nspch1.png" alt="Изображение НСПЧ">
+        </div>
+        <p>Текст последней новости</p>
+        <p>Текст последней новости <span class="highlight">"Выделенная новость"</span> Текст последней новости</p>
+        <p>Текст последней новости</p>
+        <p>Текст последней новости</p>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById('menu');
+            if (menu.style.display === 'block') {
+                menu.style.display = 'none';
+            } else {
+                menu.style.display = 'block';
+            }
+        }
+
+        // Определяем текущую страницу и добавляем класс 'active' к соответствующей ссылке
+        function setActiveLink() {
+            var links = document.querySelectorAll('.menu a');
+            var currentUrl = window.location.pathname.split("/").pop();
+
+            links.forEach(function(link) {
+                var linkUrl = link.getAttribute('href');
+                if (linkUrl === currentUrl) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }
+
+        setActiveLink();
+    </script>
+</body>
+</html>
+
