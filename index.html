@@ -129,6 +129,56 @@
         .menu a:hover {
             background-color: #ddd;
         }
+
+        /* Стили для баннера */
+        .banner {
+            display: none; /* Скрываем баннер изначально */
+            background-color: #808080; /* Серый цвет фона */
+            color: white;
+            font-family: Arial, sans-serif; /* Красивый шрифт */
+            padding: 20px;
+            text-align: center;
+            position: fixed;
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 10px;
+            width: 500px;
+            z-index: 1000;
+            cursor: pointer;
+        }
+
+        .banner img {
+            position: absolute;
+            top: 50%;
+            left: 20px;
+            transform: translateY(-50%);
+            width: 80px; /* Размер логотипа */
+            height: 80px;
+        }
+
+        .banner .title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .banner .subtitle {
+            font-size: 16px;
+            font-weight: normal;
+        }
+
+        .banner .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: transparent;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 1001;
+        }
     </style>
 </head>
 <body>
@@ -164,6 +214,14 @@
         <script async src="https://telegram.org/js/telegram-widget.js?19" data-telegram-post="democracyDSN/8256" data-width="150" data-height="300"></script>
     </div>
 
+    <!-- Баннер -->
+    <div class="banner" id="banner">
+        <button class="close-btn" onclick="closeBanner(event)">×</button>
+        <img src="img/RGZ.png" alt="RegionsZ" class="logo">
+        <div class="title">СКАЧИВАЙ REGIONSZ</div>
+        <div class="subtitle">RegionsZ - Age of History 2</div>
+    </div>
+
     <script>
         function toggleMenu() {
             var menu = document.getElementById('menu');
@@ -195,6 +253,25 @@
             document.getElementById('tg-widget').style.display = 'flex';
             document.querySelector('.show-widget-button').style.display = 'none';
         }
+
+        // Функция для закрытия баннера
+        function closeBanner(event) {
+            event.stopPropagation(); // Останавливаем всплытие события
+            document.getElementById('banner').style.display = 'none';
+        }
+
+        // Функция для перехода на сайт при нажатии на баннер
+        function redirectToSite() {
+            window.location.href = 'https://t.me/dsn_aoh2';
+        }
+
+        // Показ баннера через 3 секунды после загрузки страницы
+        setTimeout(function() {
+            document.getElementById('banner').style.display = 'block';
+        }, 3000);
+
+        // Назначаем обработчик клика на баннер
+        document.getElementById('banner').addEventListener('click', redirectToSite);
     </script>
 </body>
 </html>
