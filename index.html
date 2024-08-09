@@ -179,6 +179,30 @@
             cursor: pointer;
             z-index: 1001;
         }
+
+        /* Медиа-запрос для уменьшения баннера на мобильных устройствах */
+        @media (max-width: 768px) {
+            .banner {
+                width: 200px; /* Уменьшаем ширину баннера */
+                padding: 8px; /* Уменьшаем отступы */
+            }
+            .banner img {
+                width: 32px; /* Уменьшаем размер логотипа */
+                height: 32px;
+                left: 10px; /* Смещаем логотип ближе к краю */
+            }
+            .banner .title {
+                font-size: 9.6px; /* Уменьшаем размер заголовка */
+            }
+            .banner .subtitle {
+                font-size: 6.4px; /* Уменьшаем размер подзаголовка */
+            }
+            .banner .close-btn {
+                font-size: 8px; /* Уменьшаем размер кнопки закрытия */
+                top: 5px;
+                right: 5px;
+            }
+        }
     </style>
 </head>
 <body>
