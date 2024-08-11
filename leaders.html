@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Доска почёта</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -119,6 +122,73 @@
         .awards-list li {
             margin-bottom: 5px;
         }
+
+        /* Стили для строки поиска */
+        .search-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .search-bar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #searchInput {
+            width: 300px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px 0 0 5px;
+            border-right: none;
+        }
+
+        #searchButton {
+            width: 60px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 0 5px 5px 0;
+            background-color: #5cb85c;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #searchButton i {
+            font-size: 18px;
+        }
+
+        #searchButton:hover {
+            background-color: #4cae4c;
+        }
+
+        .highlight {
+            background-color: yellow;
+            font-weight: normal; /* Сохранение стиля, если текст был жирным */
+        }
+
+        @keyframes flashRed {
+            0%, 100% { background-color: #5cb85c; }
+            50% { background-color: #e74c3c; }
+        }
+
+        @keyframes flashDarkBlue {
+            0%, 100% { background-color: #5cb85c; } /* Основной фон кнопки */
+            50% { background-color: #000080; } /* Новый цвет мигания */
+        }
+
+        .flash-red {
+            animation: flashRed 0.5s ease-in-out 2;
+        }
+
+        .flash-dark-blue {
+            animation: flashDarkBlue 0.5s ease-in-out 2;
+        }
     </style>
 </head>
 <body>
@@ -138,9 +208,17 @@
 
     <h1>Доска почёта</h1>
 
+    <!-- Строка поиска -->
+    <div class="search-container">
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Введите ключевые слова..">
+            <button id="searchButton"><i class="fas fa-search"></i></button>
+        </div>
+    </div>
+
     <div class="profile">
         <img src="img/person1.jpg" alt="Фото1">
-        <div class="profile-info">
+        <div class="profile-info" id="content">
             <h3>Узя Микеевич</h3>
             <p><em>Микей, Старый еврей, <a href="tg://openmessage?user_id=6367655579">@Микейчик</a></em></p>
             <p>Первое появление: 15.08.2023</p>
@@ -171,7 +249,7 @@
     
     <div class="profile">
         <img src="img/person2.jpg" alt="Фото2">
-        <div class="profile-info">
+        <div class="profile-info" id="content">
             <h3>Виктор</h3>
             <p><em>Виктор, <a href="tg://openmessage?user_id=5153316576">@Polkovnik_Makkenzi</a></em></p>
             <p>Первое появление: 16.08.2023</p>
@@ -193,7 +271,7 @@
 
     <div class="profile">
         <img src="img/person3.jpg" alt="Фото3">
-        <div class="profile-info">
+        <div class="profile-info" id="content">
             <h3>Владислав Винницкий</h3>
             <p><em>Влад, Ярослав, <a href="tg://openmessage?user_id=5816991101">@sanitar4ick</a></em></p>
             <p>Первое появление: 16.09.2023</p>
@@ -215,7 +293,7 @@
 	
 	  <div class="profile">
         <img src="img/person4.jpg" alt="Фото4">
-        <div class="profile-info">
+        <div class="profile-info" id="content">
             <h3>Данич</h3>
             <p><em>Гном, Коловратов, <a href="https://t.me/Danich_DSN">@Danich_DSN</a></em></p>
             <p>Первое появление: 29.08.2023</p>
@@ -260,38 +338,70 @@
     <script>
         function toggleMenu() {
             var menu = document.getElementById('menu');
-            if (menu.style.display === 'block') {
-                menu.style.display = 'none';
-            } else {
-                menu.style.display = 'block';
-            }
+            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
         }
 
         function toggleAwards(id) {
             var awardsList = document.getElementById(id);
-            if (awardsList.style.display === 'block') {
-                awardsList.style.display = 'none';
-            } else {
-                awardsList.style.display = 'block';
-            }
+            awardsList.style.display = awardsList.style.display === 'block' ? 'none' : 'block';
         }
 
-        // Определяем текущую страницу и добавляем класс 'active' к соответствующей ссылке
         function setActiveLink() {
             var links = document.querySelectorAll('.menu a');
             var currentUrl = window.location.pathname.split("/").pop();
-
             links.forEach(function(link) {
                 var linkUrl = link.getAttribute('href');
-                if (linkUrl === currentUrl) {
-                    link.classList.add('active');
-                } else {
-                    link.classList.remove('active');
-                }
+                link.classList.toggle('active', linkUrl === currentUrl);
             });
         }
 
         setActiveLink();
+
+        document.getElementById('searchButton').addEventListener('click', function() {
+            let input = document.getElementById('searchInput').value.toLowerCase();
+            let profiles = document.querySelectorAll('.profile-info');
+            let found = false;
+
+            // Сброс старого выделения
+            document.querySelectorAll('.highlight').forEach(el => {
+                el.classList.remove('highlight');
+            });
+
+            profiles.forEach(profile => {
+                let paragraphs = profile.getElementsByTagName('p');
+                let profileContainsMatch = false;
+
+                Array.from(paragraphs).forEach(paragraph => {
+                    let originalHTML = paragraph.innerHTML; // Сохраняем оригинальный HTML
+                    let text = paragraph.textContent;
+                    paragraph.innerHTML = originalHTML; // Восстанавливаем исходный HTML
+
+                    if (input && text.toLowerCase().includes(input)) {
+                        let regex = new RegExp(`(${input})`, 'gi');
+                        paragraph.innerHTML = text.replace(regex, `<span class="highlight">$1</span>`);
+                        profileContainsMatch = true;
+                    }
+                });
+
+                if (profileContainsMatch) {
+                    found = true;
+                }
+            });
+
+            const searchButton = document.getElementById('searchButton');
+
+            if (found) {
+                searchButton.classList.add('flash-dark-blue');
+                searchButton.addEventListener('animationend', function() {
+                    searchButton.classList.remove('flash-dark-blue');
+                }, { once: true });
+            } else {
+                searchButton.classList.add('flash-red');
+                searchButton.addEventListener('animationend', function() {
+                    searchButton.classList.remove('flash-red');
+                }, { once: true });
+            }
+        });
     </script>
 </body>
 </html>
