@@ -335,6 +335,12 @@
                     container.insertBefore(img, container.firstChild);
 
                     console.log('Гифка была успешно добавлена!'); // Отладка вставки гифки
+
+                    // Удаление гифки через 5 секунд
+                    setTimeout(function() {
+                        container.removeChild(img);
+                        console.log('Гифка была удалена через 5 секунд!');
+                    }, 5000); // 5000 миллисекунд = 5 секунд
                 } else {
                     console.log('Страна не Россия, гифка не показывается.');
                 }
@@ -345,6 +351,7 @@
     // Вызов функции при загрузке страницы
     window.onload = showGifForRussia;
 </script>
+
 
   
 
