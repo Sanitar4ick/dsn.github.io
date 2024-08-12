@@ -311,6 +311,43 @@
             .catch(error => console.error('Ошибка при определении IP:', error));
     </script>
 
+
+    <script>
+    function showGifForRussia() {
+        // Запрос на ipinfo.io для определения местоположения
+        fetch("https://ipinfo.io/json?token=9e379df2dbed56")
+            .then(response => response.json())
+            .then(data => {
+                console.log(`Определенная страна: ${data.country}`); // Отладка страны
+                // Проверка страны
+                if (data.country === "RU") {
+                    // Создание элемента <img> для гифки
+                    var img = document.createElement("img");
+                    img.src = "prikol.gif";
+                    img.alt = "Prikol Gif";
+                    img.style.maxWidth = "100%";
+                    img.style.marginTop = "20px";
+                    img.style.borderRadius = "8px";
+                    img.style.boxShadow = "0px 0px 10px 5px rgba(51, 51, 51, 0.7)";
+
+                    // Вставка гифки в контейнер
+                    var container = document.querySelector(".container");
+                    container.insertBefore(img, container.firstChild);
+
+                    console.log('Гифка была успешно добавлена!'); // Отладка вставки гифки
+                } else {
+                    console.log('Страна не Россия, гифка не показывается.');
+                }
+            })
+            .catch(err => console.error('Ошибка при определении IP:', err));
+    }
+
+    // Вызов функции при загрузке страницы
+    window.onload = showGifForRussia;
+</script>
+
+  
+
     <style>
         .quote p {
             font-style: normal;
