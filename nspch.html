@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>НСПЧ</title>
     <style>
+        /* Ваши стили остались без изменений */
         body {
             font-family: "Times New Roman", Times, serif;
             margin: 0;
@@ -116,19 +117,17 @@
     </div>
 
     <div class="container">
+        <center>
+            <button class="accordion"><center><b>Манифест НСПЧ-У</b></center></button>
+            <div class="panel">
 
-<center>
-<button class="accordion"><center><b>Манифест НСПЧ-У</b></center></button>
-<div class="panel">
+                <div class="image-container">
+                    <img src="img/nspch1.png" alt="Изображение НСПЧ">
+                </div>
+                <b>Манифест НСПЧ-У</b>
+                <span class="highlight">02.08.2024</span>
+                <p>ㅤ</p>
 
-<div class="image-container">
-    
-            <img src="img/nspch1.png" alt="Изображение НСПЧ">
-        </div>
-        <b>Манифест НСПЧ-У</b>
-        <span class="highlight">02.08.2024</span>
-        <p>ㅤ</p>
-    
 <blockquote class='quote'>
   <cite><center>НСПЧ-У (НСПЧ УКРАИНА) — дополнительная политическая</center></cite>
   <cite><center>программа Национал-социалистичиской партии чата DSN</center></cite>
@@ -259,19 +258,19 @@
 <p>В сфере обслуживания по умолчанию должен использоваться украинский язык. Однако, при обращении клиента на другом языке, сотрудники могут переключиться на него, если это удобно и возможно. Это обеспечивает уважение к клиентам и их выбору языка общения.</p>
 <b>10.5 Право на использование русского языка в частной жизни</b>
 <p>НСПЧ-У поддерживает законодательно закрепленное право граждан общаться на русском языке в частной жизни. Никто не имеет права запрещать или ограничивать использование русского языка в личном общении, что соответствует принципам свободы и недопустимости дискриминации по языковому признаку.</p>
-</div>
-</center>
-       <p>ㅤ</p> 
-<right>
-    <div class="buttons">
-        <a href="https://telegra.ph/Manifest-NSPCH-U-08-01" target="_blank">
-            <img src="https://telegra.ph/favicon.ico">
-        </a>
+
+            </div>
+        </center>
+
+        <p>ㅤ</p> 
+        <right>
+            <div class="buttons">
+                <a href="https://telegra.ph/Manifest-NSPCH-U-08-01" target="_blank">
+                    <img src="https://telegra.ph/favicon.ico">
+                </a>
+            </div>
+        </right>
     </div>
-</right>
-    
-    </div>
-    
 
     <script>
         function toggleMenu() {
@@ -301,26 +300,33 @@
         setActiveLink();
     </script>
 
+    <script>
+        // Определение IP-адреса с помощью сервиса ipinfo.io
+        fetch('https://ipinfo.io/json?token=9e379df2dbed56')
+            .then(response => response.json())
+            .then(data => {
+                console.log(`IP: ${data.ip}, Город: ${data.city}, Страна: ${data.country}`);
+                // Вы можете использовать эти данные в дальнейшем коде, если необходимо
+            })
+            .catch(error => console.error('Ошибка при определении IP:', error));
+    </script>
+
     <style>
+        .quote p {
+            font-style: normal;
+            font-weight: normal;
+            font-size: 22px;
+            line-height: 28px;
+            color: #333333;
+        }
+        .quote cite {
+            font-style: italic;
+            font-weight: normal;
+            font-size: 22px;
+            line-height: 28px;
+            color: #aaaaaa;
+        }
 
-}
-.quote p {
-  font-style: normal;
-  font-weight: normal;
-  font-size: 22px;
-  line-height: 28px;
-  color: #333333;
-}
-.quote cite {
-  font-style: italic;
-  font-weight: normal;
-  font-size: 22px;
-  line-height: 28px;
-  color: #aaaaaa;
-}
-
-</style>
-<style>
         .accordion {
             background-color: #f0f0f0;
             color: #444;
@@ -344,32 +350,7 @@
             background-color: #f5f5f5;
             overflow: hidden;
         }
-    </style>
 
-
-<p>ㅤ</p>
-
-
-<script>
-    var acc = document.getElementsByClassName("accordion");
-    var i;
-
-    for (i = 0; i < acc.length; i++) {
-        acc[i].addEventListener("click", function() {
-            this.classList.toggle("active");
-            var panel = this.nextElementSibling;
-            if (panel.style.display === "block") {
-                panel.style.display = "none";
-            } else {
-                panel.style.display = "block";
-            }
-        });
-    }
-</script>
-
-    
-    <style>
-        }
         .buttons {
             display: flex;
             gap: 10px;
@@ -402,7 +383,5 @@
             margin-bottom: 20px;
         }
     </style>
-    
 </body>
 </html>
-
