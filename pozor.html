@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Доска позора</title>
+    <link rel="stylesheet" href="stylepozor.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <input type="checkbox" class="theme-toggle" id="themeToggle" checked>
+    </div>
+
+    <!-- Оранжевые шарики на заднем фоне -->
+    <div class="lantern"></div>
+    <div class="lantern"></div>
+    <div class="lantern"></div>
+    <div class="lantern"></div>
+
+    <div class="container">
+        <div class="list-container">
+            <h2>ДОСКА ПОЗОРА</h2>
+
+            <div class="card" onclick="location.href='armyan.html'">
+                <div class="content-container">
+                    <div class="game-image1"></div>
+                    <h3 class="game-name">Армяшка</h3>
+                </div>
+                <h1 class="rating">#1</h1>
+            </div>
+
+            <div class="card" onclick="location.href='krylova.html'">
+                <div class="content-container">
+                    <div class="game-image2"></div>
+                    <h3 class="game-name">Крылова</h3>
+                </div>
+                <h1 class="rating">#2</h1>
+            </div>
+
+            <div class="card">
+                <div class="content-container">
+                    <div class="game-image3"></div>
+                    <h3 class="game-name">ИМЯ</h3>
+                </div>
+                <h1 class="rating">#3</h1>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('change', function() {
+            if (this.checked) {
+                document.body.classList.remove('dark-theme');
+            } else {
+                document.body.classList.add('dark-theme');
+            }
+        });
+    </script>
+</body>
+</html>
