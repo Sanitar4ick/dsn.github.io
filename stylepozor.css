@@ -56,7 +56,11 @@ body.dark-theme {
 
 .navigation a.active {
     font-weight: bold;
-    color: #000080; /* Цвет текущей страницы для светлой темы */
+    color: #000080;
+}
+
+body.dark-theme .navigation a.active {
+    color: #4a7eb2;
 }
 
 .navigation a:hover {
@@ -72,11 +76,7 @@ body.dark-theme .navigation a {
 }
 
 body.dark-theme .navigation a.active {
-    color: #0066cc; /* Светлее синий цвет для тёмной темы */
-}
-
-body.dark-theme .navigation a:hover {
-    color: #ff8400;
+    color: #4a7eb2;
 }
 
 .container {
@@ -125,7 +125,7 @@ h2 {
     width: 70px;
     height: 70px;
     margin-left: 10px;
-    background-image: url("pozor1.jfif");
+    background-image: url("img/pozor1.jfif");
     background-position: center;
     background-size: cover;
     border-radius: 5px;
@@ -135,7 +135,7 @@ h2 {
     width: 70px;
     height: 70px;
     margin-left: 10px;
-    background-image: url("pozor2.jfif");
+    background-image: url("img/pozor2.jfif");
     background-position: center;
     background-size: cover;
     border-radius: 5px;
@@ -311,26 +311,39 @@ h2 {
     animation: up 55s infinite;
 }
 
-@media (max-width: 650px){
-    .lantern:nth-child(4){
-        display: none;
+@media (max-width: 650px) {
+    .navigation {
+        padding: 5px 10px;
     }
-}
 
-@media (max-width: 500px){
-    .lantern:nth-child(3){
-        display: none;
+    .navigation ul {
+        gap: 7px;
     }
-}
 
-@media (max-width: 300px){
-    .lantern:nth-child(2){
-        display: none;
+    .navigation a {
+        font-size: 12px;
+        padding: 5px;
     }
-}
 
-@media (max-width: 200px){
-    .lantern:nth-child(1){
-        display: none;
+    .container {
+        padding: 50px 0px;
+    }
+
+    .list-container {
+        width: 200px;
+    }
+
+    .card {
+        height: 47.5px;
+    }
+
+    .game-image1, .game-image2, .game-image3 {
+        width: 35px;
+        height: 35px;
+    }
+
+    .game-name {
+        font-size: 10px;
+        margin-left: 15px;
     }
 }
