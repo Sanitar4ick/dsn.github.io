@@ -325,13 +325,14 @@ h2 {
     }
 
     .game-image1, .game-image2, .game-image3 {
-        width: 45px; /* Увеличено на 30% от 35px */
-        height: 45px; /* Увеличено на 30% от 35px */
+        width: 90px; /* Увеличено на 30% от 70px */
+        height: 90px; /* Увеличено на 30% от 70px */
+        margin-left: 13px; /* Увеличено на 30% от 10px */
     }
 
     .game-name {
-        font-size: 13px; /* Увеличено на 30% от 10px */
-        margin-left: 20px; /* Увеличено на 30% от 15px */
+        font-size: 26px; /* Увеличено на 30% от 20px */
+        margin-left: 39px; /* Увеличено на 30% от 30px */
     }
 }
 
