@@ -56,7 +56,7 @@ body.dark-theme {
 
 .navigation a.active {
     font-weight: bold;
-    color: #000080; /* Цвет текущей страницы */
+    color: #000080; /* Цвет текущей страницы для светлой темы */
 }
 
 .navigation a:hover {
@@ -72,7 +72,7 @@ body.dark-theme .navigation a {
 }
 
 body.dark-theme .navigation a.active {
-    color: #000080; /* Цвет текущей страницы в тёмной теме */
+    color: #0066cc; /* Светлее синий цвет для тёмной темы */
 }
 
 body.dark-theme .navigation a:hover {
