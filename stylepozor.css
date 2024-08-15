@@ -312,6 +312,19 @@ h2 {
 }
 
 @media (max-width: 650px) {
+    .navigation {
+        padding: 5px 10px;
+    }
+
+    .navigation ul {
+        gap: 7px;
+    }
+
+    .navigation a {
+        font-size: 12px;
+        padding: 5px;
+    }
+
     .container {
         padding: 50px 0px;
     }
@@ -325,30 +338,12 @@ h2 {
     }
 
     .game-image1, .game-image2, .game-image3 {
-        width: 45px; /* Увеличено на 30% от 35px */
-        height: 45px; /* Увеличено на 30% от 35px */
+        width: 35px;
+        height: 35px;
     }
 
     .game-name {
-        font-size: 13px; /* Увеличено на 30% от 10px */
-        margin-left: 20px; /* Увеличено на 30% от 15px */
-    }
-}
-
-@media (max-width: 500px) {
-    .lantern:nth-child(3) {
-        display: none;
-    }
-}
-
-@media (max-width: 300px) {
-    .lantern:nth-child(2) {
-        display: none;
-    }
-}
-
-@media (max-width: 200px) {
-    .lantern:nth-child(1) {
-        display: none;
+        font-size: 10px;
+        margin-left: 15px;
     }
 }
