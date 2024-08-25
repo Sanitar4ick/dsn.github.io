@@ -317,4 +317,15 @@ span{
         padding: 1rem 2rem;
         font-size: 1.4rem;
     }
+	
+}video {
+    display: block;
+    margin: 0 auto;
+    border: 5px solid var(--main-color); /* Рамка вокруг видео */
+    box-shadow: 0 0 15px var(--main-color); /* Свечение вокруг рамки */
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+video:hover {
+    box-shadow: 0 0 30px var(--main-color); /* Увеличение свечения при наведении */
 }
