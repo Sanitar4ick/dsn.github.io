@@ -63,62 +63,35 @@
         a:hover {
             text-decoration: underline;
         }
-        .show-widget-button {
+        .widget-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .widget-container img {
+            width: 200px; /* Размер изображения */
+            height: auto;
             cursor: pointer;
-            background-color: #333;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            padding: 10px 20px;
-            font-size: 1rem;
-            margin: 10px;
-        }
-        .show-widget-button:hover {
-            background-color: #0056b3;
+            transition: box-shadow 0.3s ease;
         }
 
-        /* Стили для меню */
-        .menu-icon {
-            cursor: pointer;
-            padding: 10px;
-            position: absolute;
-            top: 10px;
-            left: 10px;
+        .widget-container img:hover {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
         }
 
-        .menu-icon div {
-            width: 25px;
-            height: 3px;
-            background-color: #333;
-            margin: 5px 0;
-        }
-
-        .menu {
+        .speech {
             display: none;
-            position: absolute;
-            top: 50px;
-            left: 10px;
-            width: 200px;
-            background-color: #f4f4f4;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 10px;
-            border-radius: 5px;
-            font-family: "Times New Roman", Times, serif;
-        }
-
-        .menu a {
-            text-decoration: none;
-            color: #333;
-            display: block;
-            padding: 10px 0;
-        }
-
-        .menu a.active {
             font-weight: bold;
+            max-width: 600px;
+            margin-top: 10px;
+            text-align: left;
+            opacity: 0;
+            transition: opacity 0.5s ease;
         }
 
-        .menu a:hover {
-            background-color: #ddd;
+        .speech.show {
+            display: block;
+            opacity: 1;
         }
 
         /* Стили для баннера */
@@ -190,23 +163,47 @@
             }
         }
 
-        .widget-container {
-            display: flex;
-            align-items: center;
-            margin-top: 20px;
-        }
-
-        .widget-container img {
-            width: 150px;
-            height: auto;
+        .menu-icon {
             cursor: pointer;
-            margin-right: 20px;
+            padding: 10px;
+            position: absolute;
+            top: 10px;
+            left: 10px;
         }
 
-        .widget-container .speech {
+        .menu-icon div {
+            width: 25px;
+            height: 3px;
+            background-color: #333;
+            margin: 5px 0;
+        }
+
+        .menu {
+            display: none;
+            position: absolute;
+            top: 50px;
+            left: 10px;
+            width: 200px;
+            background-color: #f4f4f4;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            border-radius: 5px;
+            font-family: "Times New Roman", Times, serif;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #333;
+            display: block;
+            padding: 10px 0;
+        }
+
+        .menu a.active {
             font-weight: bold;
-            max-width: 600px;
-            text-align: left;
+        }
+
+        .menu a:hover {
+            background-color: #ddd;
         }
     </style>
 </head>
@@ -240,11 +237,11 @@
         <b>ТУТ БУДУТ НОВОСТИ, И ЕЩЁ МНОГО ЧЕГО ИНТЕРЕСНОГО)</b>
     </div>
     <div class="widget-container">
-        <img src="img/durov.png" alt="Дуров" onclick="openImage()">
-        <div class="speech">
+        <img src="img/durov.png" alt="Дуров" id="toggleImage">
+        <div class="speech" id="speechText">
             Сегодня мы стали свидетелями вопиющего нарушения основных прав и свобод. Европейский Союз, который традиционно славится своей приверженностью правам человека и свободе слова, совершил неприемлемый шаг, который подрывает эти ценности.
 
-            Павел Дуров, основатель популярной платформы Telegram, столкнулся с неприемлемым актом произвола. За два минуты до его приземления во Франции был выдан ордер на его арест. Это задержание не просто проявление политической репрессии, но и откровенное нарушение свободы слова, которую мы все должны защищать.
+            Павел Дуров, основатель популярной платформы Telegram, столкнулся с неприемлемым актом произвола. За два минуты до его приземления во Франции был выдан ордер на его арест. Это задержание не просто проявление политической репрессии, но и откровенное нарушение свободы слова, которую мы все ценим и защищаем.
 
             Мы должны решительно выступить против этой несправедливости и поддержать Павла Дурова. Его случай не единственный, но он стал символом более широких репрессий, которые могут коснуться каждого из нас. От нас зависит, сможем ли мы защитить наши права и свободы.
         </div>
@@ -288,6 +285,21 @@
         function openImage() {
             window.open('durov.png', '_blank');
         }
+
+        // Функция для отображения и скрытия текста при нажатии на изображение
+        function toggleSpeech() {
+            var speechText = document.getElementById('speechText');
+            var image = document.getElementById('toggleImage');
+            if (speechText.classList.contains('show')) {
+                speechText.classList.remove('show');
+                image.style.opacity = 1; // Возвращаем исходную прозрачность изображения
+            } else {
+                speechText.classList.add('show');
+                image.style.opacity = 0.7; // Устанавливаем прозрачность изображения при отображении текста
+            }
+        }
+
+        document.getElementById('toggleImage').addEventListener('click', toggleSpeech);
 
         // Функция для закрытия баннера
         function closeBanner(event) {
