@@ -1,5 +1,3 @@
-<!06.08.2024 - DSN (sanitar4ick)>
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -64,13 +62,6 @@
         }
         a:hover {
             text-decoration: underline;
-        }
-        .tg-widget {
-            display: none; /* Скрываем виджет по умолчанию */
-            justify-content: center;
-            width: 150px;
-            height: 300px;
-            margin-top: 20px;
         }
         .show-widget-button {
             cursor: pointer;
@@ -198,6 +189,25 @@
                 font-size: 6.4px; /* Уменьшаем размер подзаголовка */
             }
         }
+
+        .widget-container {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .widget-container img {
+            width: 150px;
+            height: auto;
+            cursor: pointer;
+            margin-right: 20px;
+        }
+
+        .widget-container .speech {
+            font-weight: bold;
+            max-width: 600px;
+            text-align: left;
+        }
     </style>
 </head>
 <body>
@@ -213,7 +223,7 @@
         <a href="index.html" class="active">Главная</a>
         <a href="nspch.html">НСПЧ</a>
         <a href="leaders.html">Доска почёта</a>
-	<a href="pozor.html">Доска позора</a>
+        <a href="pozor.html">Доска позора</a>
     </div>
 
     <div class="buttons">
@@ -227,11 +237,17 @@
     <div class="content">
         <h1>DSN NEWS</h1>
         <h2><a href="https://t.me/sanitar4ick" target="_blank">by sanitar4ick with ❤️</a></h2>
-		<b>ТУТ БУДУТ НОВОСТИ, И ЕЩЁ МНОГО ЧЕГО ИНТЕРЕСНОГО)</b>
+        <b>ТУТ БУДУТ НОВОСТИ, И ЕЩЁ МНОГО ЧЕГО ИНТЕРЕСНОГО)</b>
     </div>
-    <button class="show-widget-button" onclick="showWidget()">Поехали!</button>
-    <div class="tg-widget" id="tg-widget">
-        <script async src="https://telegram.org/js/telegram-widget.js?19" data-telegram-post="democracyDSN/8256" data-width="150" data-height="300"></script>
+    <div class="widget-container">
+        <img src="durov.png" alt="Дуров" onclick="openImage()">
+        <div class="speech">
+            Сегодня мы стали свидетелями вопиющего нарушения основных прав и свобод. Европейский Союз, который традиционно славится своей приверженностью правам человека и свободе слова, совершил неприемлемый шаг, который подрывает эти ценности.
+
+            Павел Дуров, основатель популярной платформы Telegram, столкнулся с неприемлемым актом произвола. За два минуты до его приземления во Франции был выдан ордер на его арест. Это задержание не просто проявление политической репрессии, но и откровенное нарушение свободы слова, которую мы все должны защищать.
+
+            Мы должны решительно выступить против этой несправедливости и поддержать Павла Дурова. Его случай не единственный, но он стал символом более широких репрессий, которые могут коснуться каждого из нас. От нас зависит, сможем ли мы защитить наши права и свободы.
+        </div>
     </div>
 
     <!-- Баннер -->
@@ -269,9 +285,8 @@
 
         setActiveLink();
 
-        function showWidget() {
-            document.getElementById('tg-widget').style.display = 'flex';
-            document.querySelector('.show-widget-button').style.display = 'none';
+        function openImage() {
+            window.open('durov.png', '_blank');
         }
 
         // Функция для закрытия баннера
