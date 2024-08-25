@@ -1,3 +1,4 @@
+/* Основные стили */
 *{
     margin: 0;
     padding: 0;
@@ -14,55 +15,62 @@
     --text-color:white;
     --main-color:#00ffee;
 }
+
 html{
     font-size: 60%;
     overflow-x: hidden;
 }
+
 body{
     background-color: var(--bg-color);
     color: var(--text-color);
 }
+
 .header{
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     padding: 4rem 12% 4rem;
-    background: rgba(0, 0, 0, 0.3) ;
+    background: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(10px);
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 5;
 }
+
 .logo{
     font-size: 3rem;
     color: var(--text-color);
     font-weight: 800;
     cursor: pointer;
     transition: 0.3s ease;
-
 }
 
 .logo:hover{
     transform: scale(1.1);
 }
+
 .logo span{
-    text-shadow:  0 0 25px var(--main-color);
+    text-shadow: 0 0 25px var(--main-color);
 }
+
 .navbar a{
-font-size: 1.8rem;
-color: var(--text-color);
-margin-left: 4rem;
-font-weight:500;
-transition: 0.3s ease;
-border-bottom: 3px  solid transparent;
+    font-size: 1.8rem;
+    color: var(--text-color);
+    margin-left: 4rem;
+    font-weight: 500;
+    transition: 0.3s ease;
+    border-bottom: 3px solid transparent;
 }
-.navbar  a:hover,
+
+.navbar a:hover,
 .navbar a.active{
     color: var(--main-color);
     border-bottom: 3px solid var(--main-color);
 }
+
 #menu-icon{
     font-size: 3.6rem;
     color: var(--main-color);
@@ -73,62 +81,71 @@ section{
     min-height: 100vh;
     padding: 10rem 12% 10rem;
 }
+
 .home{
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 15rem;
 }
+
 .home-content{
-display: flex;
-flex-direction: column;
-align-items: baseline;
-text-align: left;
-justify-content: center;
-margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    text-align: left;
+    justify-content: center;
+    margin-top: 3rem;
 }
+
 span{
     color: var(--main-color);
 }
+
 .logo span{
     color: var(--main-color);
 }
+
 .home-content h3{
-        margin-bottom: 2rem;
-        margin-top: 1rem;
+    margin-bottom: 2rem;
+    margin-top: 1rem;
     font-size: 3.5rem;
 }
+
 .home-content h1{
     font-size: 7rem;
     font-weight: 700;
     margin-top: 1.5rem;
     line-height: 1;
 }
+
 .home-img{
     border-radius: 50%;
 }
+
 .home-img img{
     position: relative;
     top: 3rem;
-    width: 16vw; /* Уменьшено на 50% от 32vw */;
+    width: 16vw;
     border-radius: 50%;
-    box-shadow:  0  0 25px var(--main-color);
+    box-shadow: 0 0 25px var(--main-color);
     cursor: pointer;
     transition: 0.4s ease-in-out;
-
 }
+
 .home-img img:hover{
     box-shadow: 0 0 25px var(--main-color),
      0 0 50px var(--main-color),
      0 0 100px var(--main-color);
 }
+
 .home-content p{
-    font-size:1.5rem ;
+    font-size: 1.5rem;
     font-weight: 500;
     line-height: 1.8;
     max-width: 1000px;
-
 }
+
 .social-icons a {
     display: inline-flex;
     justify-content: center;
@@ -141,46 +158,47 @@ span{
     border-radius: 50%;
     color: var(--main-color);
     margin: 3rem 1.5rem 3rem;
-    transition: 0.3s  ease-in-out;
+    transition: 0.3s ease-in-out;
 }
+
 .social-icons a:hover{
     color: var(--text-color);
-    transform: scale(1.3) translateY(-5px) ;
+    transform: scale(1.3) translateY(-5px);
     box-shadow: 0 0 25px var(--main-color);
     background-color: var(--main-color);
-
 }
+
 .btn{
     display: inline-block;
     padding: 1rem 2.8rem;
     background: var(--main-color);
-     box-shadow: 0 0 25px var(--main-color);
-     border-radius: 4rem;
-     font-size: 1.6rem;
-     color: black;
-     border: 2px solid transparent;
-     letter-spacing: 0.1rem;
-     font-weight: 600;
-     transition: 0.3s  ease-in-out;
-     cursor: pointer;
-
+    box-shadow: 0 0 25px var(--main-color);
+    border-radius: 4rem;
+    font-size: 1.6rem;
+    color: black;
+    border: 2px solid transparent;
+    letter-spacing: 0.1rem;
+    font-weight: 600;
+    transition: 0.3s ease-in-out;
+    cursor: pointer;
 }
 
 .btn:hover{
     transform: scale(1.05);
     box-shadow: 0 0 50px var(--main-color);
 }
+
 .btn-group{
     display: flex;
     align-items: center;
     gap: 1.5rem;
 }
+
 .btn-group a:nth-of-type(2){
     background-color: black;
     color: var(--main-color);
     border: 2px solid var(--main-color);
     box-shadow: 0 0 25px var(--main-color);
-
 }
 
 .btn-group a:nth-of-type(2):hover{
@@ -190,7 +208,7 @@ span{
 }
 
 .text-animation{
-    font-size: 34px ;
+    font-size: 34px;
     font-weight: 600;
     min-width: 280px;
 }
@@ -198,11 +216,13 @@ span{
 .text-animation span{
     position: relative;
 }
+
 .text-animation span::before{
     content: 'Web Developer';
     color: var(--main-color);
     animation: words 20s infinite;
 }
+
 .text-animation span::after{
     content: "";
     background-color: var(--bg-color);
@@ -219,62 +239,82 @@ span{
         border-left: 2px solid var(--main-color);
     }
 }
+
 @keyframes words{
-    0%,
-    20%{
+    0%, 20%{
         content: 'Армянский педик';
     }
-    21%,
-    40%{
+    21%, 40%{
         content: 'Qzxcv';
     }
-    41%,
-    60%{
+    41%, 60%{
         content: '@Starfinder1';
     }
-    61%,
-    80%{
+    61%, 80%{
         content: 'Позор DSN';
     }
-    81%,
-    100%{
+    81%, 100%{
         content: '';
     }
 }
+
 @keyframes typing{
-    10%,
-    15%,
-    30%,
-    35%,
-    50%,
-    55%,
-    70%,
-    75%,
-    90%,
-    95%{
+    10%, 15%, 30%, 35%, 50%, 55%, 70%, 75%, 90%, 95%{
         width: 0;
     }
-    5%,
-    20%,
-    25%,
-    40%,
-    45%,
-    60%,
-    65%,
-    80%,
-    85%{
+    5%, 20%, 25%, 40%, 45%, 60%, 65%, 80%, 85%{
         width: calc(100% + 8px);
     }
 }
 
+/* Мобильная адаптация */
+@media (max-width: 768px) {
+    .header {
+        padding: 2rem 5%;
+    }
 
+    .logo {
+        font-size: 2.4rem;
+    }
 
+    .navbar a {
+        font-size: 1.5rem;
+        margin-left: 2rem;
+    }
 
+    .home {
+        flex-direction: column;
+        gap: 5rem;
+    }
 
+    .home-content {
+        align-items: center;
+        text-align: center;
+        margin-top: 0;
+    }
 
+    .home-content h3 {
+        font-size: 2.5rem;
+    }
 
+    .home-content h1 {
+        font-size: 5rem;
+    }
 
+    .home-img img {
+        width: 25vw;
+        top: 2rem;
+    }
 
+    .social-icons a {
+        width: 4rem;
+        height: 4rem;
+        font-size: 2rem;
+        margin: 2rem 1rem;
+    }
 
-
-
+    .btn {
+        padding: 1rem 2rem;
+        font-size: 1.4rem;
+    }
+}
