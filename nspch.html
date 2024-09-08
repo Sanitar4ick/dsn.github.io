@@ -106,7 +106,7 @@
         fetch('https://ipinfo.io/json?token=9e379df2dbed56')
             .then(response => response.json())
             .then(data => {
-                const restrictedCountries = ['DE', 'FR', 'BE', 'RO']; // Коды стран Германии, Франции, Бельгии, Румынии
+                const restrictedCountries = ['DE', 'FR', 'BE', 'RO', 'AT', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'SK', 'SI', 'ES', 'SE']; // Коды стран ЕС
                 if (restrictedCountries.includes(data.country)) {
                     window.location.href = 'blocked.html'; // Моментальный редирект на block.html
                 }
