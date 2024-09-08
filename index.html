@@ -220,6 +220,20 @@
             background-color: #ddd;
         }
     </style>
+	
+	<script>
+        // Определение IP-адреса с помощью сервиса ipinfo.io
+        fetch('https://ipinfo.io/json?token=9e379df2dbed56')
+            .then(response => response.json())
+            .then(data => {
+                const restrictedCountries = ['DE', 'FR', 'BE', 'RO']; // Коды стран Германии, Франции, Бельгии, Румынии
+                if (restrictedCountries.includes(data.country)) {
+                    window.location.href = 'block.html'; // Моментальный редирект на block.html
+                }
+            })
+            .catch(error => console.error('Ошибка при определении IP:', error));
+    </script>
+	
 </head>
 <body>
     <!-- Иконка меню -->
@@ -237,31 +251,12 @@
         <a href="pozor.html">Доска позора</a>
     </div>
 
-    <div class="buttons">
-        <a href="https://telegra.ph/NSPCH-DSN-02-25" target="_blank">
-            <img src="https://telegra.ph/favicon.ico" alt="НСПЧ">
-        </a>
-        <a href="https://telegra.ph/Manifest-NSPCH-U-08-01" target="_blank">
-            <img src="https://cdn-icons-png.flaticon.com/512/197/197572.png" alt="НСПЧ-У">
-        </a>
-    </div>
     <div class="content">
         <h1>DSN NEWS</h1>
         <h2><a href="https://t.me/sanitar4ick" target="_blank">by sanitar4ick with ❤️</a></h2>
         <b>ТУТ БУДУТ НОВОСТИ, И ЕЩЁ МНОГО ЧЕГО ИНТЕРЕСНОГО)</b>
     </div>
-    <div class="widget-container">
-        <img src="img/durov.png" alt="Дуров" id="toggleImage">
-        <div class="speech" id="speechText">
-            Сегодня мы стали свидетелями вопиющего нарушения основных прав и свобод. Европейский Союз, который традиционно славится своей приверженностью правам человека и свободе слова, совершил неприемлемый шаг, который подрывает эти ценности.
-
-            Павел Дуров, основатель популярной платформы Telegram, столкнулся с неприемлемым актом произвола. За два минуты до его приземления во Франции был выдан ордер на его арест. Это задержание не просто проявление политической репрессии, но и откровенное нарушение свободы слова, что абсолютно неприемлемо в демократическом обществе.
-
-            Мы должны ясно заявить: этот акт произвола не только недопустим, но и должен стать предметом глубокого осуждения со стороны мирового сообщества. Мы не можем позволить, чтобы такие действия стали нормой. Мы должны стоять на защите прав человека и свободы слова.
-
-            Дуров не один. Это не только его проблема, но и проблема всех нас, кто верит в свободу слова и права человека.
-        </div>
-    </div>
+    
 
     <!-- Баннер -->
     <div class="banner" id="banner">
@@ -284,57 +279,31 @@
         // Определяем текущую страницу и добавляем класс 'active' к соответствующей ссылке
         function setActiveLink() {
             var links = document.querySelectorAll('.menu a');
-            var currentUrl = window.location.pathname.split("/").pop();
-
-            links.forEach(function(link) {
-                var linkUrl = link.getAttribute('href');
-                if (linkUrl === currentUrl) {
+            links.forEach(function (link) {
+                if (link.getAttribute('href') === window.location.pathname) {
                     link.classList.add('active');
-                } else {
-                    link.classList.remove('active');
                 }
             });
         }
-
         setActiveLink();
 
-        function openImage() {
-            window.open('durov.png', '_blank');
+        function showBanner() {
+            var banner = document.getElementById('banner');
+            banner.style.display = 'block';
         }
 
-        // Функция для отображения и скрытия текста при нажатии на изображение
-        function toggleSpeech() {
-            var speechText = document.getElementById('speechText');
-            var image = document.getElementById('toggleImage');
-            if (speechText.classList.contains('show')) {
-                speechText.classList.remove('show');
-                image.style.opacity = 1; // Возвращаем исходную прозрачность изображения
-            } else {
-                speechText.classList.add('show');
-                image.style.opacity = 0.7; // Устанавливаем прозрачность изображения при отображении текста
-            }
-        }
-
-        document.getElementById('toggleImage').addEventListener('click', toggleSpeech);
-
-        // Функция для закрытия баннера
         function closeBanner(event) {
-            event.stopPropagation(); // Останавливаем всплытие события
-            document.getElementById('banner').style.display = 'none';
+            var banner = document.getElementById('banner');
+            banner.style.display = 'none';
+            event.stopPropagation(); // Остановка всплытия события
         }
 
-        // Функция для перехода на сайт при нажатии на баннер
-        function redirectToSite() {
-            window.location.href = 'https://t.me/dsn_aoh2';
-        }
+        window.addEventListener('load', function () {
+            // Показываем баннер через 5 секунд после загрузки страницы
+            setTimeout(showBanner, 5000);
+        });
 
-        // Показ баннера через 3 секунды после загрузки страницы
-        setTimeout(function() {
-            document.getElementById('banner').style.display = 'block';
-        }, 3000);
-
-        // Назначаем обработчик клика на баннер
-        document.getElementById('banner').addEventListener('click', redirectToSite);
     </script>
+
 </body>
 </html>
