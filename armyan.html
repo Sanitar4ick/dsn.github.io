@@ -8,6 +8,19 @@
     <!-- Icons -->
      <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>Армяшка</title>
+
+	<script>
+        // Определение IP-адреса с помощью сервиса ipinfo.io
+        fetch('https://ipinfo.io/json?token=9e379df2dbed56')
+            .then(response => response.json())
+            .then(data => {
+                const restrictedCountries = ['DE', 'FR', 'BE', 'RO']; // Коды стран Германии, Франции, Бельгии, Румынии
+                if (restrictedCountries.includes(data.country)) {
+                    window.location.href = 'blocked.html'; // Моментальный редирект на block.html
+                }
+            })
+            .catch(error => console.error('Ошибка при определении IP:', error));
+  	</script>
 </head>
 <body>
     
