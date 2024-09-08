@@ -5,6 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Доска позора</title>
     <link rel="stylesheet" href="stylepozor.css">
+
+    <script>
+        // Определение IP-адреса с помощью сервиса ipinfo.io
+        fetch('https://ipinfo.io/json?token=9e379df2dbed56')
+            .then(response => response.json())
+            .then(data => {
+                const restrictedCountries = ['DE', 'FR', 'BE', 'RO']; // Коды стран Германии, Франции, Бельгии, Румынии
+                if (restrictedCountries.includes(data.country)) {
+                    window.location.href = 'blocked.html'; // Моментальный редирект на block.html
+                }
+            })
+            .catch(error => console.error('Ошибка при определении IP:', error));
+    </script>
+    
 </head>
 <body>
     <div class="theme-toggle-container">
