@@ -228,7 +228,7 @@
             .then(data => {
                 const restrictedCountries = ['DE', 'FR', 'BE', 'RO']; // Коды стран Германии, Франции, Бельгии, Румынии
                 if (restrictedCountries.includes(data.country)) {
-                    window.location.href = 'blocked/blocked.html'; // Моментальный редирект на block.html
+                    window.location.href = 'blocked.html'; // Моментальный редирект на block.html
                 }
             })
             .catch(error => console.error('Ошибка при определении IP:', error));
