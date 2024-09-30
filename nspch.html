@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>НСПЧ</title>
+    <link rel="stylesheet" href="stylesN.css">
+	<script>
+        // Определение IP-адреса с помощью сервиса ipinfo.io
+        fetch('https://ipinfo.io/json?token=9e379df2dbed56')
+            .then(response => response.json())
+            .then(data => {
+                const restrictedCountries = ['DE', 'FR', 'BE', 'RO', 'AT', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'SK', 'SI', 'ES', 'SE']; // Коды стран ЕС
+                if (restrictedCountries.includes(data.country)) {
+                    window.location.href = 'blocked.html'; // Моментальный редирект на block.html
+                }
+            })
+            .catch(error => console.error('Ошибка при определении IP:', error));
+    </script>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <h1>DSN NEWS</h1>
+        </div>
+        <nav class="nav">
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="nspch.html" class="active">НСПЧ</a></li>
+                <li><a href="leaders.html">Доска почёта</a></li>
+                <li><a href="pozor.html">Доска позора</a></li>
+            </ul>
+        </nav>
+    </header>
+
+	<!-- img src="https://via.placeholder.com/600x400" alt="Pinned Article image" --> 
+
+    <div class="container">
+        <main class="content">
+            <article class="article pinned-article" onclick="openPinnedArticle(this)">
+                <img src="img/otkaz.png" alt="Pinned Article image">
+                <div class="pinned-content">
+                    <div class="pinned-text">Это закреплённая статья</div>
+                </div>
+                <h2>Пользовательское соглашение</h2>
+                <p>Эта статья информирует пользователей о правилах использования материалов сайта..</p>
+                <p>ㅤ</p>
+                <p>24.09.2024</p>
+            </article>
+
+            <article class="article" onclick="openArticle(this, 'nspch3.png')">
+                <img src="img/serb-part.png" alt="Article image">
+                <h2>Приветствуем нового члена партии!</h2>
+                <p>Мы рады сообщить, что наша партия приняла в свои ряды десятого участника..</p>
+                <p>ㅤ</p>
+                <p>15.09.2024</p>
+            </article>
+
+            <article class="article" onclick="openArticle(this, 'nspch2.png')">
+                <img src="img/nspch2.png" alt="Article image">
+                <h2>НСПЧ-Украина</h2>
+                <p>Дополнительная политическая программа НСПЧ в отношении Украины..</p>
+                <p>ㅤ</p>
+                <p>01.08.2024</p>
+            </article>
+
+            <article class="article" onclick="openArticle(this, 'nspch1.png')">
+                <img src="img/nspch1.png" alt="Article image">
+                <h2>НСПЧ. Общая программа</h2>
+                <p>Общая информация о партии. Анкета для вступления, партийная символика и другое..</p>
+                <p>ㅤ</p>
+                <p>25.02.2024</p>
+            </article>
+        </main>
+    </div>
+
+    <!-- Expanded Article Block -->
+    <div id="expanded-article" class="expanded-article">
+        <div class="expanded-content">
+            <span class="close-btn" onclick="closeArticle()">&#x2716;</span>
+            <h2 id="expanded-title">Заголовок статьи</h2>
+            <p id="expanded-text">Полное содержание статьи будет отображаться здесь при нажатии.</p>
+            <p id="full-content" class="full-content" style="display: none;"></p>
+        </div>
+    </div>
+
+    <script src="scriptN.js"></script>
+</body>
+</html>
